@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<!DOCTYPE modification SYSTEM "http://www.simplemachines.org/xml/modification">
+<modification xmlns="http://www.simplemachines.org/xml/modification" xmlns:smf="http://www.simplemachines.org/">
+	<id>Ezerous:SMF-KaTeX</id>
+	<version>1.0.0</version>
+
+	<file name="$sourcedir/Load.php">
+		<operation>
+			<search position="before"><![CDATA[
+	// Some basic information...
+	if (!isset($context['html_headers']))
+		$context['html_headers'] = '';
+]]></search>
+			<add><![CDATA[
+    $context['html_headers'] .=  '
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">';
+    $context['html_headers'] .=  '
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>';
+    $context['html_headers'] .=  '
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"></script>';
+    $context['html_headers'] .=  '
+	<script>
+		function renderTex(){
+			var elements = document.getElementsByClassName(\'tex\');
+			for (var i = 0; i < elements.length; i++){
+				var element = elements[i];
+				if(element.getAttribute("rendered") === "false"){
+					var displayMode = true;
+					if(element.getAttribute("inline") === "true")
+						displayMode = false;
+
+					katex.render(element.textContent, element, {
+						throwOnError: false,
+					  displayMode: displayMode
+					});
+					element.setAttribute("rendered", "true");
+				}
+			}
+		}
+		document.addEventListener("DOMContentLoaded", renderTex);
+	</script>';
+	]]></add>
+		</operation>
+	</file>
+
+	<file name="$sourcedir/Subs.php">
+		<operation>
+			<search position="before"><![CDATA[			),
+			array(
+				'tag' => 'white',
+				'before' => '<span style="color: white;">',
+				'after' => '</span>',
+			),]]></search>
+			<add><![CDATA[
+			array(
+				'tag' => 'tex',
+				'type' => 'unparsed_content',
+				'content' => '<span class="tex" rendered="false">$1</span>',
+			),
+			array(
+				'tag' => 'tex',
+				'type' => 'unparsed_equals_content',
+				'content' => '<span class="tex" rendered="$2" inline="true">$1</span>',
+			),]]></add>
+		</operation>
+	</file>
+
+	<file name="$themedir/Post.template.php">
+		<operation>
+			<search position="before"><![CDATA[			'list' => array('code' => 'list', 'before' => '[list]\n[li]', 'after' => '[/li]\n[li][/li]\n[/list]', 'description' => $txt[261]),]]></search>
+			<add><![CDATA[
+			array(),
+			'tex' => array('code' => 'tex', 'before' => '[tex]', 'after' => '[/tex]', 'description' => $txt['latex']),
+			'tex-inline' => array('code' => 'tex-inline', 'before' => '[tex=inline]', 'after' => '[/tex]', 'description' => $txt['latex-inline']),]]></add>
+		</operation>
+		<operation>
+			<search position="before"><![CDATA[				setInnerHTML(document.getElementById("preview_body"), bodyText);
+				document.getElementById("preview_body").className = "post";]]></search>
+			<add><![CDATA[
+				renderTex();]]></add>
+		</operation>
+	</file>
+
+	<file name="$themedir/languages/Modifications.english.php">
+		<operation>
+			<search position="end" />
+			<add><![CDATA[//- LaTeX
+$txt['latex'] = 'LaTeX';
+$txt['latex-inline'] = 'LaTeX inline';]]></add>
+		</operation>
+	</file>
+
+	<file name="$themedir/languages/Modifications.english-utf8.php" error="skip">
+		<operation>
+			<search position="end" />
+			<add><![CDATA[//- LaTeX
+$txt['latex'] = 'LaTeX';
+$txt['latex-inline'] = 'LaTeX inline';]]></add>
+		</operation>
+	</file>
+
+	<file name="$themedir/languages/Modifications.greek.php" error="skip">
+		<operation>
+			<search position="end" />
+			<add><![CDATA[//- LaTeX
+$txt['latex'] = 'LaTeX';
+$txt['latex-inline'] = 'LaTeX inline';]]></add>
+		</operation>
+	</file>
+
+	<file name="$themedir/languages/Modifications.greek-utf8.php" error="skip">
+		<operation>
+			<search position="end" />
+			<add><![CDATA[//- LaTeX
+$txt['latex'] = 'LaTeX';
+$txt['latex-inline'] = 'LaTeX inline';]]></add>
+		</operation>
+	</file>
+</modification>
