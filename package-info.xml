@@ -4,20 +4,20 @@
 <package-info xmlns="http://www.simplemachines.org/xml/package-info" xmlns:smf="http://www.simplemachines.org/">
 	<id>Ezerous:SMF-KaTeX</id>
 	<name>SMF-KaTeX</name>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 	<type>modification</type>
 
 	<install for="1.1 - 1.1.99">
-		<readme type="inline">This package renders TeX expressions using KaTeX. Code repository: https://github.com/Ezerous/SMF-KaTeX.</readme>
+		<readme type="file">installation.txt</readme>
 		<modification type="file">modification.xml</modification>
-		<require-file name="tex.gif" destination="$themedir/images/bbc" />
-		<require-file name="tex-inline.gif" destination="$themedir/images/bbc" />
+		<require-file name="tex.gif" destination="$imagesdir/bbc" />
+		<require-file name="tex-inline.gif" destination="$imagesdir/bbc" />
 	</install>
 
 	<uninstall for="1.1 - 1.1.99">
-		<readme type="inline">This will uninstall SMF-KaTeX.</readme>
+		<readme type="file">uninstallation.txt</readme>
 		<modification type="file" reverse="true">modification.xml</modification>
-		<remove-file name="tex.gif" destination="$themedir/images/bbc" />
-		<remove-file name="tex-inline.gif" destination="$themedir/images/bbc" />
+		<remove-file name="$imagesdir/bbc/tex.gif" />
+		<remove-file name="$imagesdir/bbc/tex-inline.gif" />
 	</uninstall>
 </package-info>
