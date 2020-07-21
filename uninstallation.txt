@@ -1,2 +1,0 @@
-This will uninstall SMF-KaTeX.
-You may also have to manually remove any remaining 'tex.gif' and 'tex-inline.gif' from theme directories other than default.

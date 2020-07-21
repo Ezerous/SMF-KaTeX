@@ -4,20 +4,17 @@
 <package-info xmlns="http://www.simplemachines.org/xml/package-info" xmlns:smf="http://www.simplemachines.org/">
 	<id>Ezerous:SMF-KaTeX</id>
 	<name>SMF-KaTeX</name>
-	<version>1.0.1</version>
+	<version>1.1.0</version>
 	<type>modification</type>
 
 	<install for="1.1 - 1.1.99">
 		<readme type="file">installation.txt</readme>
 		<modification type="file">modification.xml</modification>
-		<require-file name="tex.gif" destination="$imagesdir/bbc" />
-		<require-file name="tex-inline.gif" destination="$imagesdir/bbc" />
+		<code>add_images.php</code>
 	</install>
 
 	<uninstall for="1.1 - 1.1.99">
-		<readme type="file">uninstallation.txt</readme>
 		<modification type="file" reverse="true">modification.xml</modification>
-		<remove-file name="$imagesdir/bbc/tex.gif" />
-		<remove-file name="$imagesdir/bbc/tex-inline.gif" />
+		<code>remove_images.php</code>
 	</uninstall>
 </package-info>

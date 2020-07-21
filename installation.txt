@@ -1,4 +1,3 @@
 This package renders TeX expressions using KaTeX (https://katex.org/).
 It adds two buttons to the editor that provide the [tex] and [tex=inline] tags. Use those tags to wrap a TeX expression and it will be rendered automatically.
-If you are you using multiple themes make sure to copy 'tex.gif' and 'tex-inline.gif' from Themes/default/images/bbc to the respective directories of the other themes.
 For more information visit https://github.com/Ezerous/SMF-KaTeX.
