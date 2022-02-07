@@ -4,7 +4,7 @@
 <package-info xmlns="http://www.simplemachines.org/xml/package-info" xmlns:smf="http://www.simplemachines.org/">
 	<id>Ezerous:SMF-KaTeX</id>
 	<name>SMF-KaTeX</name>
-	<version>1.1.0</version>
+	<version>1.2.0</version>
 	<type>modification</type>
 
 	<install for="1.1 - 1.1.99">
