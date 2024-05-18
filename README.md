@@ -6,3 +6,8 @@
 ![Last Commit](https://img.shields.io/github/last-commit/Ezerous/SMF-KaTeX/develop.svg?style=flat)
 
 A package for [SMF](https://www.simplemachines.org/) v1.1.x forums that uses [KaTeX](https://katex.org/) to render TeX expressions.
+
+## Usage
+
+It adds two buttons to the editor that provide the [tex] and [tex=inline] tags.
+Use these tags to wrap TeX expressions and they will be rendered automatically.
