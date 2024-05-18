@@ -1,3 +1,4 @@
 This package renders TeX expressions using KaTeX (https://katex.org/).
-It adds two buttons to the editor that provide the [tex] and [tex=inline] tags. Use those tags to wrap a TeX expression and it will be rendered automatically.
+It adds two buttons to the editor that provide the [tex] and [tex=inline] tags.
+Use these tags to wrap a TeX expression and it will be rendered automatically.
 For more information visit https://github.com/Ezerous/SMF-KaTeX.
